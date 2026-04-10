@@ -1,0 +1,267 @@
+---
+title: "공동현관 RFID 복사 ( feat. TM, iButton )"
+categories: [IT, ETC]
+---
+
+# 공동현관 RFID 복사 ( feat. TM, iButton )
+
+**날짜:** IT
+**URL:** https://blog.naver.com/PostView.naver?blogId=ththth03&logNo=223479802917&categoryNo=&parentCategoryNo=1&from=thumbnailList
+
+---
+
+공동현관 RFID 복사 ( feat. TM, iButton )
+
+복제 방법이 궁금하면 맨 밑으로 ㄱㄱ
+
+​
+
+장시간의 백수생활로 삶이 피폐해져서 재미난 것을 찾던 도중,
+
+그동안 미뤄왔던 공동현관 키 복제를 진행하기로 했다.
+
+매번 집 키를 들고 다니는게 여간 귀찮았던 게 아니었기 때문.
+
+​
+
+실패한 첫 시도
+
+대충 구글링을 하고 알리에서 아래 사진의 준비물들을 구매했다.
+
+( 필요없을 것 같아 반품했다... )
+
+RFID 복제기와 NFC 코인
+
+여기서 사소한 상식
+
+RFID 중 13.56Mhz의 주파수를 사용하는 것을 NFC라고 한다더라...
+
++ RFID 복제기를 통한 읽기 = '복사', 쓰기 = '붙여넣기' 이다.
+
+​
+
+소제목에 써있었다시피 두 가지의 이유로 인해
+
+실패할 수밖에 없었다.
+
+첫 번째 이유는 바로 우리 집 키가 일반적인
+
+NFC 카드가 아니라 TM 형식인 ( 정보가 잘 없어서 잘못된 정보일수도... )
+
+iButton 이었기 때문이다.
+
+우리 집 키
+
+이러한 방식의 키를 복사하는 것에 관한 정보가
+
+거의 없어서 iButton 이라는 것도 한참을 찾아서 알았다...
+
+( 내가 못 찾았을 확률이 높긴 하다. 영어를 못해서... ㅎ )
+
+​
+
+두 번째 이유는 내가 구매한 NFC 코인이
+
+Mifare Ultralight을 사용했다는 것이다.
+
+대부분의 NFC, 그리고 우리 집 키는
+
+Mifare Classic을 사용한다.
+
+아래는 RFID 복제기가 제대로 작동하지 않는 영상이다.
+
+정상 작동했을 때도 하나의 NFC 카드를 읽고 쓰는 것만
+
+가능했지, 다른 NFC 카드에 쓰는 것은 불가능했다.
+
+다음 동영상
+
+subject
+
+author
+
+죄송합니다. 문제가 발생했습니다. 다시 시도해 주세요.
+
+고화질 재생이 가능한 영상입니다.
+				설정에서 해상도를 변경해보세요.
+
+​
+
+여튼 TM 형식의 키를 복제하려고 다양한 노력들을 했었다.
+
+지금 돌아보면 정~말 관련이 없는 설계도까지
+
+찾아가면서 말이다.
+
+찾은게 아까우니 일단 첨부해 본다.
+
+https://www.analog.com/media/en/technical-documentation/data-sheets/DS1972.pdf
+
+https://www.analog.com/media/en/package-pcb-resources/package/pkg_pdf/can-f5/21-0266.pdf
+
+​
+
+​
+
+​
+
+실패한 두 번째 시도
+
+그렇다. 두 번째도 실패했다.
+
+우리 집 키가 TM 형식이라는 것을 알고
+
+그에 맞는 복제기를 추가로 구매하였다.
+
+( 이 또한 필요없을 것 같아 반품했다... )
+
+이 제품으로 집 키를 읽는 데에는 성공했지만,
+
+쓰기는 되지 않았다.
+
+집 키의 모델명이 RW1990이 아니었기 때문이 아닐까 한다.
+
+심지어, TM 형식의 키를 읽은 뒤,
+
+NFC에 다시 쓰는 것 또한 불가능해 보였다.
+
+아래는 TM 복제기 실패 영상이다.
+
+다음 동영상
+
+subject
+
+author
+
+죄송합니다. 문제가 발생했습니다. 다시 시도해 주세요.
+
+고화질 재생이 가능한 영상입니다.
+				설정에서 해상도를 변경해보세요.
+
+​
+
+성공한 마지막 세 번째 시도
+
+드디어 성공했다.
+
+돈이 많이 들어 최후의 보류로 생각했던 방법인데,
+
+이게 돈이 가장 안 드는 것 같다. ㅋㅋㅋ
+
+​
+
+최후의 보류란,
+
+RFID 스티커를 만들어주는 업체에서 주문 제작을 한 뒤,
+
+해당 스티커를 집에서 핸드폰으로 복제하는 방법이다.
+
+​
+
+해당 업체에게 16진수로 된 집 키의 시리얼 넘버를 알려주면,
+
+그들이 갖고있는 RFID 스티커에 시리얼 넘버를 입력해준다.
+
+그냥 집 키를 RFID 스티커에 복.붙. 하는 것이다.
+
+16진수로 이루어진 시리얼 넘버를 10자리의 10진수 넘버로 변환하는
+
+그 방식이 궁금하지만, 아직은 찾지 못했다.
+
+( 2개씩 끊어 변환하면 10자리가 넘고, 4개씩 끊으면 10자리가 되긴 하지만 뭔가 아닌 것 같다. )
+
+​
+
+아래처럼 성공했지만, 주문제작을 통해 바로 해결하니
+
+너무 허무했다...
+
+다음 동영상
+
+subject
+
+author
+
+죄송합니다. 문제가 발생했습니다. 다시 시도해 주세요.
+
+고화질 재생이 가능한 영상입니다.
+				설정에서 해상도를 변경해보세요.
+
+​
+
+이렇게 주문제작한 스티커를 복제하기 위해
+
+CUID RFID 스티커를 구매하였다.
+
+Mifare Classic Tool이라는 앱과 삼성 핸드폰만 있으면
+
+CUID RFID 스티커를 통해 얼마든지 복제할 수 있다.
+
+​
+
+5개에 2.6달라로, 맨 처음 구매했던
+
+20개에 1.9달라짜리 NFC 카드 보다는 훨씬 비쌌다.
+
+아직 RFID 스티커가 도착하지는 않았지만,
+
+안될 일은 없기 때문에 딱히 걱정하지는 않는다.
+
+​
+
+​
+
++
+
+NFC Tools라는 앱을 삼성 핸드폰에 설치하고
+
+NFC를 활성화 시킨 뒤, 앱 접속 후 핸드폰 후면에
+
+집 키를 대보면 그에 대한 정보가 나올 것이다.
+
+안 나오면 요리조리 비벼보고 NFC 활성화됐는지 확인해봐라.
+
+그래도 안되면... 새로운 방법을 찾아보시길...
+
+집 키의 정보가 아래와 같다면,
+
+CUID RFID 스티커를 이용해 얼마든지 복제할 수 있다.
+
+( 무조건 CUID라고 써있어야 한다. UID는 핸드폰으로는 복제를 못 한다! )
+
+​
+
+조건은 다음과 같다.
+
+태그 유형 : ISO 14443 ~A
+
+이용가능한 기술 : MifareClassic 포함
+
+암호화 : X
+
+​
+
+배송기간 때문에 그런가 한 게 없는데, 한 달이나 걸렸다...
+
+​
+
+끝
+
+---
+
+## 이미지
+
+![이미지 1](https://postfiles.pstatic.net/MjAyNDA2MTRfMTE2/MDAxNzE4MzY3MTYwMDU2.4M_oD2tAiKJqXtEc1nSFsTFxwRCzvQE0WFcDXnVto2cg.tsCKaOLSXExQ6rUXb1eae6bm_rdckae7S9bVrw-GPVAg.JPEG/20240614-210525.jpg?type=w80_blur)
+
+![이미지 2](https://postfiles.pstatic.net/MjAyNDA2MTRfMTg1/MDAxNzE4MzcxMDI2Njkz._1hm_Ln6Sah4NT21J2pVtUy136p4ijnLmJC8dlHyMSEg.a0rhbq0vv_qLnLbCPDyTqtnt7rCfLC38shUlYaTRIoAg.JPEG/IMG_8104.jpg?type=w80_blur)
+
+![이미지 3](https://postfiles.pstatic.net/MjAyNDA2MTRfMjU3/MDAxNzE4MzcwNDYxNDg0.qdLTFTWvtE4ZjPmOamE1xnLm7n0dAr5kYPIImxujqyUg.WE_Vl_JF0rh2a60pwYzDnuCLGnzdiJ0VZQkuUWVtHAIg.JPEG/IMG_8145.jpg?type=w80_blur)
+
+![이미지 4](https://postfiles.pstatic.net/MjAyNDA2MTRfMjQg/MDAxNzE4MzcwNDYxNDk1.kxAoxw8LHa1BdmJeFPKeVqZ7eYoDhacFR_EikfyE0NEg.jYwIVN01gKqS9DXVCo3ij6VYL701QPOdHOLREmRiZtog.JPEG/IMG_8144.jpg?type=w80_blur)
+
+![이미지 5](https://postfiles.pstatic.net/MjAyNDA2MTRfNjkg/MDAxNzE4MzcwNjQyMjAw.4waLnfBLtV5N6HPYX-GPv5Zld6k0v2SeU5kWugDdRj8g.sW4GPii0-0-OkpoSwF9lTuX0Wr2Lgjo484LgIO9vpL8g.JPEG/20240614-210616.jpg?type=w80_blur)
+
+![이미지 6](https://postfiles.pstatic.net/MjAyNDA2MTRfMTY2/MDAxNzE4MzcyMzcyNDUz.4uFFgYJ-wTzCdarGjXpd4xHFMCuetGWqx9JiYDfJARgg.0NwoUTGDymqM5rPaamm_m7R5dN39UEAoc3rneHvmP_Ig.JPEG/20240614-210657.jpg?type=w80_blur)
+
+---
+*크롤링 시간: 2026-04-10T15:03:41.070Z*

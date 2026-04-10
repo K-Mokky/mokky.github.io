@@ -1,0 +1,246 @@
+---
+title: "모의해킹용 웹 페이지 제작#1 ( DB 제작과 회원가입 ) Ubuntu(20.04.06 LTS) [Apache, MariaDB, PHP]"
+categories: [IT, Web Hacking]
+---
+
+# 모의해킹용 웹 페이지 제작#1 ( DB 제작과 회원가입 ) Ubuntu(20.04.06 LTS) [Apache, MariaDB, PHP]
+
+**날짜:** Web Hacking
+**URL:** https://blog.naver.com/PostView.naver?blogId=ththth03&logNo=223182655091&categoryNo=&parentCategoryNo=1&from=thumbnailList
+
+---
+
+모의해킹용 웹 페이지 제작#1 ( DB 제작과 회원가입 ) Ubuntu(20.04.06 LTS) [Apache, MariaDB, PHP]
+
+참고자료 : https://www.codingfactory.net/12187
+
+​
+
+​
+
+​
+
+1. DB 만들기
+
+​
+
+웹 페이지를 만들기에 앞서, MariaDB를 이용해 DB를 만들어줘야한다.
+
+​
+
+아래의 명령어를 입력하고 root의 비밀번호를 입력하여 MariaDB를 실행시켜준다.
+
+​
+
+이러한 문구가 나온 뒤, 입력칸 상태가 아래와 같이 변할것이다.
+
+​
+
+여기에 'CREATE DATABASE' 명령어를 이용하여 DB를 만들어주면 된다.
+
+​
+
+DB를 만들었다면 'USE' 명령어를 사용하여 해당 DB를 사용한다고 알려줘야 한다.
+
+​
+
+정상적으로 작동했으면 아래와 같은 화면이 본인의 화면에도 보일 것이다.
+
+DB 제작과 사용 설정
+
+수고했다.
+
+서버 운용을 위한 DB를 정상적으로 만든 것이다.
+
+​
+
+​
+
+​
+
+2. table 만들기
+
+​
+
+회원정보를 저장하기 위해서 DB에
+
+id, username, password를 갖고있는 table을 만들어야 한다.
+
+아래와 같이 입력해주면 된다.
+
+​
+
+​
+
+​
+
+3. 회원가입 페이지 구현하기
+
+​
+
+웹 페이지를 만들고 웹 서버에 적용하기 위해선 vi로 .php 파일을 만든 뒤 해당된 경로에
+
+저장해줘야 한다. ( vi를 만들 때, sudo를 이용해 관리자 권한으로 만들어 줘야 한다. )
+
+Ubuntu를 사용하는 내가 php파일을 저장해야 하는 위치는
+
+/var/www/html 였다.
+
+나는 이 안에 webphp 디렉토리를 만들었다.
+
+최종적으로 php 파일들이 위치한 곳은
+
+/var/www/html/webphp 인 것이다.
+
+나는 아직 php에 무지하기에 맨 위에서 언급한 참고 사이트의 소스를 사용하였다.
+
+​
+
+먼저, DB를 연결해주기 위해 db.php 파일을 만들어야 한다.
+
+아래의 코드에서 'db_user', 'db_password', 'db_name' 부분을
+
+각각 자신의 DB의 사용자명, 비밀번호, DB이름으로 변경해줘야 한다.
+
+​
+
+db.php
+
+​
+
+아래의 register.php는 회원가입 페이지의 php 파일이다.
+
+​
+
+register.php
+
+​
+
+다음으로, 아래의 registerok.php는 회원가입이 성공했을 때의 작동할 php 파일이다.
+
+​
+
+registerok.php
+
+​
+
+파일을 저장하고 난 뒤에는 아래와 같은 명령어로 서버를 다시 시작해주는게 좋다.
+
+( 서버가 작동 중일 때에만 해당. )
+
+​
+
+* 오류 발생 *
+
+​
+
+localhost/webphp/log/register.php에서 회원가입을 하면
+
+register-ok.php로 넘어가서 회원가입이 완료됐다는 메시지와 함께 DB에 저장이 돼야 하는데,
+
+둘 다 정상작동 X
+
+첫 번째 원인 : register.php에서 리다이렉트시키는 위치의 이름 불일치.
+
+( registerok.php여야 하는데 register-ok.php로 작성 )
+
+두 번째 원인 : register.php의 jb_conn 부분에서 사용자명 등 이름 불일치.
+
+​
+
+해결완료
+
+​
+
+​
+
+4. 정상작동 확인하기
+
+​
+
+페이지를 제작했다면, 해당 페이지가 정상 작동하는지 확인해봐야 한다.
+
+먼저, 웹 브라주어 창에
+
+localhost/webphp/log/register.php
+
+를 입력하여 회원가입 페이지에 접속한다.
+
+무얼 해야겠는가? 당연히 회원가입이다.
+
+​
+
+진행시켜!
+
+​
+
+회원가입을 한 뒤, 성공적으로 아래와 같이 registerok.php로 접속하게 된다면
+
+반쯤 성공한 것이다.
+
+​
+
+마지막으로, DB에 정상적으로 저장됐는지 확인해보자.
+
+DB에 접속한 뒤, 'USE'를 이용하여 DB를 선택해주고
+
+'SELECT'를 이용하여 테이블을 시각화해주면 된다.
+
+이렇게 뜬다면, DB에 회원정보가 정상적으로 저장된 것이다.
+
+​
+
+​
+
+수고했다.
+
+회원가입 페이지를 만들었다.
+
+​
+
+오늘의 교훈
+
+어떤 오류가 발생해도 좌절하지 말고, 구글링을 열심히 하자.
+
+그래도 해결될 기미가 보이지 않는다면...
+
+Chat GPT를 적극적으로 이용하자!
+
+​
+
+​
+
+추가적으로, 생성된 회원 정보를 삭제하고 싶을 땐
+
+mysql에서 아래와 같은 명령어를 사용하면 된다.
+
+​
+
+끝
+
+---
+
+## 이미지
+
+![이미지 1](https://postfiles.pstatic.net/MjAyMzA4MTJfMTUx/MDAxNjkxODQ1NTk2ODk4.MmsCxLm3shxy8CV7V71QTeBE3BFGCW9eJPnISr_RQQEg.i5ui_ddR4Xtj0PeZMc1fOJycqacnVmma4TSQWwoot9Eg.PNG.ththth03/image.png?type=w80_blur)
+
+![이미지 2](https://postfiles.pstatic.net/MjAyMzA4MTNfNTYg/MDAxNjkxODUyNzczMjYz.28yhhgjVLg37NWF4Mi6emMUqdaEjLV3ntP2Zi6gTdC4g.XTC9riYidJNiyW4i1-Cj_njzXd-z2aykM4i2lDG8AvIg.PNG.ththth03/image.png?type=w80_blur)
+
+![이미지 3](https://postfiles.pstatic.net/MjAyMzA4MTJfMTMw/MDAxNjkxODQ5NDg5ODcx.JPRnfsFAy6yidKcy-dOB1ZQ2eo21rTAyl31863jTmwQg.tHrVGejsDBzsIO4k6BS2BgKOF-ObMDYklE4GhmYmJuwg.PNG.ththth03/image.png?type=w80_blur)
+
+![이미지 4](https://postfiles.pstatic.net/MjAyMzA4MTNfMjg0/MDAxNjkxODY0NDI5NDAw.kVCHY22id0cLyNaEaQBhMKfYVF21Onvv8-k-RC6oPHwg.5w1TEItD8A9yGOJ_URCM2GuhrEguqQ61FGtGWYmOzmcg.PNG.ththth03/image.png?type=w80_blur)
+
+![이미지 5](https://postfiles.pstatic.net/MjAyMzA4MTNfMTU2/MDAxNjkxOTIwMTQ4OTQx.M5m6GPld2L2QDxNgiyrGTtlDPH4W1CZjbRgeCFw2QJYg.hSM5wymDpEAAuOCTRCZNn-D1onpEeEF0fZ3ZFLRHSJMg.PNG.ththth03/image.png?type=w80_blur)
+
+![이미지 6](https://postfiles.pstatic.net/MjAyMzA4MTNfMjAg/MDAxNjkxOTIwNDk2MzY3.2m67uTm6H9pEtghPz6kYXlNcmeFWohxuKWRKHi6gQgAg.i0kV1JqossiO90Gd8gt_lC8xwUAyELPjaUqn5EA1SGYg.PNG.ththth03/image.png?type=w80_blur)
+
+![이미지 7](https://postfiles.pstatic.net/MjAyMzA4MTNfMjcx/MDAxNjkxOTIwNTM3MDA0.R7UYGOCYdqj5JMPnURsTrqNmoQ9JkqynGHAyw3mW8S0g.hVjqb0BqeMKzciwVXco9X-ncplZdpz8Qt3mbgr3b9pog.PNG.ththth03/image.png?type=w80_blur)
+
+![이미지 8](https://postfiles.pstatic.net/MjAyMzA4MTNfMzUg/MDAxNjkxOTIwNTk4Nzc3.jduYBZtw6yRSsHipAn1-Xk1MCulkOKtccXQnvWYUQxcg.rPDpeIXmSqzgqBokhnjLNw5ClRBa4GlN0gMTddexodEg.PNG.ththth03/image.png?type=w80_blur)
+
+![이미지 9](https://postfiles.pstatic.net/MjAyMzA4MTNfMTY2/MDAxNjkxOTIwNjY0ODE4.p0U1WFVkTo_uJS1n6fqoIFSvA_Q4hGDiKIPMm1QiIDEg.SQ1do-rghfwBmgeMtGwj74P7cWqVT-L5E12t3QE0oXUg.PNG.ththth03/image.png?type=w80_blur)
+
+![이미지 10](https://postfiles.pstatic.net/MjAyMzA4MTNfMTc1/MDAxNjkxOTIwODYyNzM3.bjGuJPRcOgpmTKgMrUWSX0pI_bpCAC0XZMHz41gbdJYg._3AAu99-6T7a6uLQuflsS9sNq5ozC25pL1N9_2Y2IKkg.PNG.ththth03/image.png?type=w80_blur)
+
+---
+*크롤링 시간: 2026-04-10T15:04:10.683Z*
