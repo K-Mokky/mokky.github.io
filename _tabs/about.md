@@ -9,7 +9,7 @@ categories: [About]
 <div class="custom-intro-section">
   <div class="intro-item">
     <div class="img-container">
-      <img src="/assets/img/캐릭터.png" alt="Profile Image 1">
+      <img src="/assets/img/character.png" alt="Profile Image 1">
     </div>
     <div class="text-container">
       <h2>안녕하세요! 👋</h2>
@@ -28,7 +28,7 @@ categories: [About]
 
   <div class="intro-item">
     <div class="img-container">
-      <img src="/assets/img/아주대학교 로고.png" alt="Profile Image 2">
+      <img src="/assets/img/ajouLogo.png" alt="Profile Image 2">
     </div>
     <div class="text-container">
       <h2>Contact 📬</h2>
