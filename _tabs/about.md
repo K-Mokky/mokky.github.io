@@ -4,7 +4,7 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-안녕하세요! 이런저런 딴짓들 하고 있는 대학생입니다~! 💻📊
+안녕하세요! 이런저런 딴짓들 하고 있는 아주대학교 학생입니다~! 💻📊
 
 ## 딴짓 분야
 * **Taking photos**
@@ -20,4 +20,5 @@ order: 4
 * 🐙 GitHub: [내 깃허브 주소](https://github.com/K-Mokky)
 
 > "기록은 기억을 지배한다." - 꾸준히 딴짓한 내용들을 정리하고 있습니다~!
+>
 > Assistance : Gemini PRO, ChatGPT PRO, Claude Code, Codex, etc.
