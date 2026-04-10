@@ -2,12 +2,17 @@
 
 - type: github
   icon: "fab fa-github"
+  url: 'https://github.com/k-mokky'
 
-- type: twitter
-  icon: "fa-brands fa-x-twitter"
+- type: instagram
+  icon: "fa-brands fa-instagram"
+  url: 'https://instagram.com/yaskim04'
+#- type: twitter
+ # icon: "fa-brands fa-x-twitter"
 
 - type: email
   icon: "fas fa-envelope"
+  url: 'mailto: mokky@mokky.store'
   noblank: true # open link in current tab
 
 - type: rss
