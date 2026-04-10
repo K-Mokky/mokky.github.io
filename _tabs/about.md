@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "About Me"
-categories: [About]
 ---
 
 <link rel="stylesheet" href="/assets/css/custom.css">
