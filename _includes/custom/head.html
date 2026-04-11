@@ -1,0 +1,20 @@
+<script>
+  // 문서 전체에 우클릭(contextmenu) 이벤트가 발생했을 때 감지합니다.
+  document.addEventListener('contextmenu', function(event) {
+    
+    // 1. 브라우저의 기본 우클릭 메뉴가 뜨는 것을 막습니다.
+    event.preventDefault(); 
+    
+    // 2. 원하는 경고 문구를 띄웁니다.
+    alert("🚨 어허! 그러면 아니되옵니다~!"); 
+    
+  });
+
+  // (보너스) 드래그 및 텍스트 선택 방지도 스크립트로 한 번에 처리!
+  document.addEventListener('selectstart', function(event) {
+    event.preventDefault();
+  });
+  document.addEventListener('dragstart', function(event) {
+    event.preventDefault();
+  });
+</script>
