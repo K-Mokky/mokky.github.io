@@ -28,13 +28,13 @@ Pwnable.kr이란?
 일련의 과정이라는 점 참고하여 읽어주었으면 한다.
 
 ​
-![사진1](/assets/img/pwn-1.jpg)
+![사진1](/assets/img/pwn-1.png)
 
 
 오늘은 이 친구를 잡아보자.
 
 ​
-![사진2](/assets/img/pwn-2.jpg)
+![사진2](/assets/img/pwn-2.png)
 
 
 첫 번째 친구이다 보니, ssh 접속 정도의 튜토리얼이지 않을까 싶다.
@@ -44,7 +44,7 @@ Pwnable.kr이란?
 'Powershell'이나 'Ubuntu'에 위 명령어를 입력하여 ssh 접속을 해보자.
 
 ​
-![사진3](/assets/img/pwn-3.jpg)
+![사진3](/assets/img/pwn-3.png)
 ​
 
 게임을 시작하기 앞서, 어떻게 플레이해야 하는지 알아보자.
@@ -71,13 +71,13 @@ ls -al
 위 명령어를 이용하여 해당 디렉토리에 있는 모든 파일들을 한번 살펴보자.
 
 ​
-![사진4](/assets/img/pwn-4.jpg)
+![사진4](/assets/img/pwn-4.png)
 
 
 flag 파일이 있다!
 
 ​
-![사진5](/assets/img/pwn-5.jpg)
+![사진5](/assets/img/pwn-5.png)
 
 
 튜토리얼 일지라도 쉽게 잡혀주지는 않는다...
@@ -100,7 +100,7 @@ flag 파일이 있다!
 vi fd.c
 ~~~
 
-![사진6](/assets/img/pwn-6.jpg)
+![사진6](/assets/img/pwn-6.png)
 
 이게 머선 소리고?
 
@@ -109,13 +109,13 @@ vi fd.c
 0x1234라는 값이 보이니 이를 10진수로 변경해서 실행해보자!
 
 ​
-![사진7](/assets/img/pwn-7.jpg)
+![사진7](/assets/img/pwn-7.png)
 ​
 ~~~bash
 ./fd 4660
 ~~~
 
-![사진8](/assets/img/pwn-8.jpg)
+![사진8](/assets/img/pwn-8.png)
 
 어? 뭔가 입력하는 칸이 뜬다!
 
@@ -124,7 +124,7 @@ fd.c에서 "LETMEWIN" 문자열과 일치하는지 확인하는 코드가 있었
 한번 입력을 해보자.
 
 ​
-![사진9](/assets/img/pwn-9.jpg)
+![사진9](/assets/img/pwn-9.png)
 
 띠용?
 
