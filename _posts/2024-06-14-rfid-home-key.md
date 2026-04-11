@@ -72,9 +72,8 @@ Mifare Classic을 사용한다.
 다른 NFC 카드에 쓰는 것은 불가능했다.
 
 
-{% include embed/youtube.html id='KfISOwRRBLk' %}
+[![NFC 영상 썸네일](https://img.youtube.com/vi/KfISOwRRBLk/0.jpg)](https://www.youtube.com/shorts/KfISOwRRBLk)
 
-​
 
 여튼 TM 형식의 키를 복제하려고 다양한 노력들을 했었다.
 
@@ -120,7 +119,7 @@ NFC에 다시 쓰는 것 또한 불가능해 보였다.
 
 아래는 TM 복제기 실패 영상이다.
 
-{% include embed/youtube.html id='e9FyAxPCne0' %}
+[![NFC 영상 썸네일](https://img.youtube.com/vi/e9FyAxPCne0/0.jpg)](https://www.youtube.com/shorts/e9FyAxPCne0)
 
 성공한 마지막 세 번째 시도
 
@@ -158,7 +157,8 @@ RFID 스티커를 만들어주는 업체에서 주문 제작을 한 뒤,
 
 너무 허무했다...
 
-​{% include embed/youtube.html id='_5GZaWvyc4o' %}
+[![NFC 영상 썸네일](https://img.youtube.com/vi/_5GZaWvyc4o/0.jpg)](https://www.youtube.com/shorts/_5GZaWvyc4o)
+
 
 이렇게 주문제작한 스티커를 복제하기 위해
 
