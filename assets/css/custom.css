@@ -14,3 +14,15 @@
 .text-container h2 { font-size: 1.8rem; margin-bottom: 10px; font-weight: bold; }
 .text-container h3 { font-size: 1.3rem; margin-bottom: 10px; color: #444; }
 .text-container p { font-size: 1.05rem; line-height: 1.6; }
+
+img {
+
+  -webkit-touch-callout: none; /* 스마트폰에서 사진 꾹 누르면 뜨는 저장 메뉴 막기 */
+
+  -webkit-user-select: none;   /* 모바일 텍스트 및 영역 선택 막기 */
+
+  user-select: none;           /* PC 텍스트 및 영역 선택 막기 */
+
+  pointer-events: none;        /* 마우스 클릭, 우클릭, 드래그 등을 아예 투명 취급해서 무시함 */
+
+}
