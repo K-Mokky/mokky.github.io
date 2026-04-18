@@ -362,12 +362,7 @@ Tip! 설정 앱 --> 개인정보 보호 및 보안 --> 분석 및 향상 --> 분
 
 
 ~~~text
-mokky@mokky.store
-mokky
-www.mokky.store
-빠때리!
-로 변경해줘.
-그리고, 앱 내부에 남은 앱 이름 부분을 '빠때리!'로 수정해줘.
+앱 이름을 '빠때리!'로 수정해줘.
 ~~~
 
 
@@ -375,7 +370,7 @@ www.mokky.store
 
 
 ~~~text
-맥북에서 테스트해볼 때, 아이콘에 커서를 올려놓으면 빠때리!라는 이름이 안 뜨고 BatteryIpad 비슷한 이름으로 떠. 그것도 빠때리!로 변경해줘. 그리고 앱의 정보를 표시했을 때, 앱 이름과 버전만 나오는데, 거기에 Made by K_Mokky 도 표시되게 해줘.
+맥북에서 테스트해볼 때, 아이콘에 커서를 올려놓으면 빠때리!라는 이름이 안 뜨고 BatteryIpad 비슷한 이름으로 떠. 그것도 빠때리!로 변경해줘.
 ~~~
 
 
@@ -385,8 +380,7 @@ www.mokky.store
 ~~~text
 CFBundleName = 빠때리!
 CFBundleDisplayName = 빠때리!
-CFBundleGetInfoString = 빠때리! $(MARKETING_VERSION), Made by K_Mokky
-NSHumanReadableCopyright = Made by K_Mokky
+CFBundleGetInfoString = 빠때리!
 ~~~
 
 
@@ -404,24 +398,6 @@ Xcode 설정이 모두 얽혀 있었다.
 ---
 
 ## 사용된 이미지
-
-앱 아이콘은 다음 파일들을 사용했다.
-
-
-~~~text
-IpadBattery/앱아이콘.jpg
-IpadBattery/BatteryLogInsight/BatteryLogInsight/Resources/Assets.xcassets/AppIcon.appiconset/*.png
-~~~
-
-
-블로그에 올릴 때는 아래처럼 `/assets/img/` 쪽으로 복사해서 쓰면 된다.
-
-
-~~~text
-/assets/img/ipadbattery-icon.png
-/assets/img/ipadbattery-dashboard.png
-/assets/img/ipadbattery-result.png
-~~~
 
 
 ![사진3](/assets/img/ipadbattery-icon.png)
@@ -487,9 +463,9 @@ App Store 심사 제출
 
 
 ~~~text
-APP_STORE_METADATA_KO.md
-APP_STORE_REVIEW_NOTES.md
-PRIVACY_POLICY_TEMPLATE_KO.md
+APP_STORE_***_KO.md
+APP_STORE_**N*S.md
+PRIVACY_POLICY_T******.md
 ~~~
 
 
@@ -513,13 +489,6 @@ PRIVACY_POLICY_TEMPLATE_KO.md
 ## 검증은 어떻게 했나?
 
 코드를 생성한 뒤에는 가능한 범위에서 검증했다.
-
-
-~~~bash
-plutil -lint BatteryLogInsight/BatteryLogInsight/Info.plist
-swiftc -typecheck ...
-~~~
-
 
 확인한 내용은 이런 것들이었다.
 
@@ -554,22 +523,7 @@ health=84, cycle=354, total=7654, max=6429
 
 ## 만들어진 주요 파일들
 
-최종적으로 앱의 중심 파일은 아래와 같다.
-
-
-~~~text
-BatteryLogInsight/BatteryLogInsight/Services/BatteryAnalyticsParser.swift
-BatteryLogInsight/BatteryLogInsight/Models/BatteryMetrics.swift
-BatteryLogInsight/BatteryLogInsight/Models/BatteryReport.swift
-BatteryLogInsight/BatteryLogInsight/Services/BatteryInsightBuilder.swift
-BatteryLogInsight/BatteryLogInsight/Services/ReportStore.swift
-BatteryLogInsight/BatteryLogInsight/Views/DashboardView.swift
-BatteryLogInsight/BatteryLogInsight/Views/ReportDetailView.swift
-BatteryLogInsight/BatteryLogInsight/Views/GuideView.swift
-BatteryLogInsight/BatteryLogInsight/Info.plist
-BatteryLogInsight/BatteryLogInsight.xcodeproj/project.pbxproj
-~~~
-
+최종적으로 앱의 중심 파일의 내용은 아래와 같다.
 
 파서는 로그를 읽고,
 
