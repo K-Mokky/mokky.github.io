@@ -428,7 +428,7 @@ Podfile: Syntax OK
 
 
 ~~~text
-아이콘은 아주 좋은거 같아. 너가 새로 제작한거지? 최고야! 근데, 이름은 Friend Tracker말고 '친추 : 친구 추적기'로 변경해줘.
+이름은 Friend Tracker말고 '친추 : 친구 추적기'로 변경해줘.
 앱을 처음 실행하면 로딩 화면에, RADAR라고 써 있던데, 이것도 '친추'로 바꿔주고 아래 나오는 문구는 '친구를 추적하자!'로 변경해줘.
 ~~~
 
@@ -447,8 +447,6 @@ RADAR → 친추
 
 
 ~~~text
-앱을 실행했을 때 나오는 로고를 F 모양의 현재 앱 아이콘으로 변경해줘.
-인 앱 화면에서도 지금 앱 아이콘을 로고로 설정해줘.
 모든 이 앱의 로고는 지금 설정돼있는 F 모양의 앱 아이콘으로 통일해줘.
 ~~~
 
@@ -473,24 +471,7 @@ RADAR → 친추
 Navigate 앱에서 사용한 대표 이미지는 F 모양 앱 아이콘이다.
 
 
-~~~text
-Navigate Map/assets/branding/app_icon.png
-Navigate Map/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-1024x1024@1x.png
-Navigate Map/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage.png
-~~~
-
-
-블로그에 올릴 때는 아래처럼 복사해서 쓰면 된다.
-
-
-~~~text
-/assets/img/navigate-icon.png
-/assets/img/navigate-map.png
-/assets/img/navigate-rooms.png
-~~~
-
-
-![사진3](/assets/img/navigate-map.png)
+![사진3](/assets/img/navigate-icon.png)
 
 
 이 이미지는 앱 아이콘,
@@ -577,23 +558,7 @@ RLS가 약하면 문제가 될 수 있다는 결론이 나왔다.
 service_role key 없음
 Supabase publishable key 있음
 RLS 보완 필요
-.omx 로그는 공유/커밋 금지
-radar:// auth redirect는 배포 전 개선 권장
 ~~~
-
-
-그래서 `.omx/`는 `.gitignore`에 추가했다.
-
-
-~~~gitignore
-.omx/
-~~~
-
-
-AI 작업 로그에는 프롬프트나 설정 조각이 들어갈 수 있기 때문이다.
-
-이런 건 절대 GitHub에 올리면 안 된다.
-
 
 ---
 
@@ -602,19 +567,6 @@ AI 작업 로그에는 프롬프트나 설정 조각이 들어갈 수 있기 때
 개발하다 보니 프로젝트 폴더가 엄청 커졌다.
 
 그래서 마지막에는 필요 없는 산출물을 정리했다.
-
-
-~~~text
-build/
-.dart_tool/
-ios/Pods/
-ios/.symlinks/
-ios/Flutter/Generated.xcconfig
-ios/Flutter/flutter_export_environment.sh
-.omx/
-.DS_Store
-~~~
-
 
 삭제 전 프로젝트 폴더는 약 748MB였고,
 
@@ -641,7 +593,7 @@ Xcode DerivedData 약 365MB 회수
 flutter pub get
 cd ios
 pod install
-cd ..
+cd ../
 flutter run
 ~~~
 
@@ -669,28 +621,6 @@ FaceTime 영상/음성 연결
 50m 이내 만난 친구 기록
 km/h / mph 속도 단위 선택
 F 모양 앱 아이콘 브랜딩
-~~~
-
-
-중심 파일은 아래와 같다.
-
-
-~~~text
-lib/config/supabase_config.dart
-lib/providers/auth_provider.dart
-lib/providers/location_provider.dart
-lib/providers/friends_provider.dart
-lib/providers/rooms_provider.dart
-lib/screens/map/map_screen.dart
-lib/screens/rooms/rooms_screen.dart
-lib/screens/friends/friends_screen.dart
-lib/screens/settings/settings_screen.dart
-lib/services/supabase_service.dart
-lib/services/location_service.dart
-lib/services/facetime_service.dart
-supabase/schema.sql
-supabase/rls_policies.sql
-assets/branding/app_icon.png
 ~~~
 
 
