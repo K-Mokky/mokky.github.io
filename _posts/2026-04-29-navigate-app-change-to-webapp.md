@@ -12,7 +12,7 @@ tags: [Flutter, Flutter Web, Supabase, Vercel, Web App, CSP, RLS]
 > 보안과 개인정보 보호를 위해 실제 도메인, Supabase 프로젝트 주소, anon key, Vercel 프로젝트명, GitHub 저장소명은 글에서 직접 노출하지 않는다. 캡처 이미지도 개인 계정 콘솔 화면 대신 앱 화면과 배포 설정 요약 화면 위주로 준비했다.
 {: .prompt-info }
 
-![Navigate 앱 시작 화면](/assets/img/navigate-1.png)
+![Navigate 웹 앱 시작 화면](/assets/img/navigate-web-startup.png)
 
 ---
 
@@ -83,7 +83,7 @@ Vercel 서버에서 `flutter build web`을 실행하려면 Flutter SDK를 먼저
 - 브라우저 렌더링 안정성을 위해 HTML renderer를 사용한다.
 - 오래된 Flutter service worker 캐시를 피하려고 PWA service worker 전략을 끈다.
 
-![Navigate 웹 앱 지도 화면](/assets/img/navigate-map.png)
+![Navigate 웹 배포 설정 요약](/assets/img/navigate-web-build-config.png)
 
 ---
 
@@ -152,7 +152,7 @@ web/icons/navigateIcon-maskable-512.png
 
 이전에는 실패가 “아무것도 안 보임”으로 느껴질 수 있었다면, 이제는 최소한 사용자가 상태를 볼 수 있다.
 
-![Navigate 앱 아이콘](/assets/img/navigate-icon.png)
+![Navigate 웹 로그인 화면](/assets/img/navigate-web-login.png)
 
 ---
 
@@ -265,7 +265,7 @@ SUPABASE_ANON_KEY
 
 특히 웹 앱에서는 사용자가 브라우저 개발자 도구를 열어 요청을 직접 볼 수 있다. 그래서 클라이언트가 “착하게 요청할 것”이라고 믿으면 안 된다. 클라이언트는 UI만 담당하고, 권한 판단은 Supabase RLS와 서버 함수가 맡게 했다.
 
-![Navigate 기록 공유 방 화면](/assets/img/navigate-rooms.png)
+![Navigate 웹 설정 화면](/assets/img/navigate-web-settings.png)
 
 ---
 
