@@ -1,0 +1,310 @@
+<!-- Supabase password-protected comments -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  (function () {
+    const config = {
+      url: {{ site.comments.supabase.url | default: "" | jsonify }},
+      key: {{ site.comments.supabase.anon_key | default: "" | jsonify }},
+      postSlug: {{ page.url | default: page.id | jsonify }},
+      maxContentLength: {{ site.comments.supabase.max_content_length | default: 2000 }},
+      minPasswordLength: {{ site.comments.supabase.min_password_length | default: 4 }}
+    };
+
+    const labels = {
+      title: '댓글',
+      guide: '이름과 비밀번호를 입력해 댓글을 남길 수 있어요. 같은 비밀번호를 입력하면 수정하거나 삭제할 수 있어요.',
+      name: '이름',
+      password: '비밀번호',
+      content: '댓글 내용',
+      submit: '댓글 남기기',
+      edit: '수정',
+      delete: '삭제',
+      save: '저장',
+      cancel: '취소',
+      noComments: '아직 댓글이 없어요. 첫 댓글을 남겨보세요.',
+      loading: '댓글을 불러오는 중이에요...',
+      missingConfig: 'Supabase 댓글 설정이 아직 비어 있어요. _config.yml의 comments.supabase.url과 anon_key를 입력해 주세요.',
+      saved: '댓글을 저장했어요.',
+      updated: '댓글을 수정했어요.',
+      deleted: '댓글을 삭제했어요.',
+      passwordHint: '수정/삭제하려면 작성할 때 사용한 비밀번호가 필요해요.',
+      error: '처리 중 문제가 생겼어요. 입력값과 비밀번호를 확인해 주세요.'
+    };
+
+    const html = String.raw`
+      <section id="supabase-comments" class="mt-5" aria-labelledby="supabase-comments-title">
+        <style>
+          #supabase-comments { color: var(--text-color, inherit); }
+          #supabase-comments .comment-card {
+            border: 1px solid var(--main-border-color, rgba(128, 128, 128, .25));
+            border-radius: .75rem;
+            padding: 1rem;
+            margin-top: 1rem;
+            background: var(--card-bg, transparent);
+          }
+          #supabase-comments .comment-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .5rem;
+            align-items: baseline;
+            justify-content: space-between;
+            margin-bottom: .5rem;
+          }
+          #supabase-comments .comment-content { white-space: pre-wrap; word-break: break-word; }
+          #supabase-comments .comment-actions { display: flex; gap: .5rem; margin-top: .75rem; }
+          #supabase-comments .comment-edit-form { margin-top: .75rem; }
+          #supabase-comments textarea { min-height: 6rem; resize: vertical; }
+          #supabase-comments .honeypot { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+        </style>
+
+        <h2 id="supabase-comments-title" class="h3">${labels.title}</h2>
+        <p class="text-muted small mb-3">${labels.guide}</p>
+
+        <form class="comment-card" data-comment-create-form>
+          <div class="row g-2">
+            <div class="col-md-6">
+              <label class="form-label" for="comment-name">${labels.name}</label>
+              <input id="comment-name" name="name" class="form-control" maxlength="40" autocomplete="name" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" for="comment-password">${labels.password}</label>
+              <input id="comment-password" name="password" class="form-control" type="password" minlength="${config.minPasswordLength}" maxlength="72" autocomplete="new-password" required>
+            </div>
+          </div>
+          <div class="mt-2">
+            <label class="form-label" for="comment-content">${labels.content}</label>
+            <textarea id="comment-content" name="content" class="form-control" maxlength="${config.maxContentLength}" required></textarea>
+          </div>
+          <div class="honeypot" aria-hidden="true">
+            <label>Website <input name="website" tabindex="-1" autocomplete="off"></label>
+          </div>
+          <button class="btn btn-primary btn-sm mt-3" type="submit">${labels.submit}</button>
+        </form>
+
+        <div class="small mt-3" data-comment-status role="status" aria-live="polite"></div>
+        <div data-comment-list></div>
+      </section>
+    `;
+
+    const footer = document.querySelector('footer');
+    const mount = document.createElement('div');
+    mount.innerHTML = html;
+    const root = mount.firstElementChild;
+
+    if (footer) {
+      footer.insertAdjacentElement('beforebegin', root);
+    } else {
+      document.body.appendChild(root);
+    }
+
+    const statusEl = root.querySelector('[data-comment-status]');
+    const listEl = root.querySelector('[data-comment-list]');
+    const createForm = root.querySelector('[data-comment-create-form]');
+
+    function setStatus(message, isError) {
+      statusEl.textContent = message || '';
+      statusEl.classList.toggle('text-danger', Boolean(isError));
+      statusEl.classList.toggle('text-success', Boolean(message && !isError));
+    }
+
+    function escapeHTML(value) {
+      return String(value || '').replace(/[&<>'"]/g, function (char) {
+        return {
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          "'": '&#39;',
+          '"': '&quot;'
+        }[char];
+      });
+    }
+
+    function formatDate(value) {
+      try {
+        return new Intl.DateTimeFormat('ko-KR', {
+          dateStyle: 'medium',
+          timeStyle: 'short'
+        }).format(new Date(value));
+      } catch (_) {
+        return value;
+      }
+    }
+
+    function normalizeError(error) {
+      if (!error) return labels.error;
+      if (/rate_limited|duplicate_comment/i.test(error.message || '')) {
+        return '댓글을 너무 빠르게 남기고 있어요. 잠시 뒤 다시 시도해 주세요.';
+      }
+      if (/bad_password|not_found|comment_locked/i.test(error.message || '')) {
+        return '비밀번호가 맞지 않거나 댓글이 잠시 잠겼어요. 잠시 뒤 다시 시도해 주세요.';
+      }
+      if (/invalid_/i.test(error.message || '')) {
+        return '이름, 비밀번호, 댓글 길이를 확인해 주세요.';
+      }
+      return labels.error;
+    }
+
+    config.url = String(config.url || '').trim();
+    config.key = String(config.key || '').trim();
+    config.postSlug = String(config.postSlug || window.location.pathname).trim();
+
+    if (!config.url || !config.key || config.url.includes('YOUR_') || config.key.includes('YOUR_')) {
+      createForm.hidden = true;
+      setStatus(labels.missingConfig, true);
+      return;
+    }
+
+    const client = window.supabase.createClient(config.url, config.key, {
+      auth: { persistSession: false, autoRefreshToken: false }
+    });
+
+    async function loadComments() {
+      setStatus(labels.loading);
+      const { data, error } = await client.rpc('blog_get_comments', {
+        p_post_slug: config.postSlug
+      });
+
+      if (error) {
+        setStatus(normalizeError(error), true);
+        return;
+      }
+
+      renderComments(data || []);
+      setStatus('');
+    }
+
+    function renderComments(comments) {
+      if (!comments.length) {
+        listEl.innerHTML = `<p class="text-muted mt-3">${labels.noComments}</p>`;
+        return;
+      }
+
+      listEl.innerHTML = comments.map(function (comment) {
+        const updated = comment.updated_at && comment.updated_at !== comment.created_at
+          ? ` · 수정됨 ${escapeHTML(formatDate(comment.updated_at))}`
+          : '';
+        return `
+          <article class="comment-card" data-comment-id="${escapeHTML(comment.id)}">
+            <div class="comment-meta">
+              <strong>${escapeHTML(comment.author_name)}</strong>
+              <time class="text-muted small" datetime="${escapeHTML(comment.created_at)}">
+                ${escapeHTML(formatDate(comment.created_at))}${updated}
+              </time>
+            </div>
+            <div class="comment-content">${escapeHTML(comment.content)}</div>
+            <div class="comment-actions">
+              <button class="btn btn-outline-secondary btn-sm" type="button" data-action="edit">${labels.edit}</button>
+              <button class="btn btn-outline-danger btn-sm" type="button" data-action="delete">${labels.delete}</button>
+            </div>
+            <form class="comment-edit-form d-none" data-comment-edit-form>
+              <p class="text-muted small mb-2">${labels.passwordHint}</p>
+              <input name="password" class="form-control form-control-sm mb-2" type="password" minlength="${config.minPasswordLength}" maxlength="72" placeholder="${labels.password}" required>
+              <textarea name="content" class="form-control form-control-sm" maxlength="${config.maxContentLength}" required>${escapeHTML(comment.content)}</textarea>
+              <div class="comment-actions">
+                <button class="btn btn-primary btn-sm" type="submit">${labels.save}</button>
+                <button class="btn btn-outline-secondary btn-sm" type="button" data-action="cancel">${labels.cancel}</button>
+              </div>
+            </form>
+          </article>
+        `;
+      }).join('');
+    }
+
+    createForm.addEventListener('submit', async function (event) {
+      event.preventDefault();
+      const form = new FormData(createForm);
+
+      if (form.get('website')) return;
+
+      const submitButton = createForm.querySelector('button[type="submit"]');
+      submitButton.disabled = true;
+      setStatus(labels.loading);
+
+      const { error } = await client.rpc('blog_create_comment', {
+        p_post_slug: config.postSlug,
+        p_author_name: form.get('name'),
+        p_password: form.get('password'),
+        p_content: form.get('content')
+      });
+
+      submitButton.disabled = false;
+
+      if (error) {
+        setStatus(normalizeError(error), true);
+        return;
+      }
+
+      createForm.reset();
+      setStatus(labels.saved);
+      await loadComments();
+    });
+
+    listEl.addEventListener('click', async function (event) {
+      const button = event.target.closest('button[data-action]');
+      if (!button) return;
+
+      const card = button.closest('[data-comment-id]');
+      const form = card.querySelector('[data-comment-edit-form]');
+      const action = button.dataset.action;
+
+      if (action === 'edit') {
+        form.classList.remove('d-none');
+        form.querySelector('input[name="password"]').focus();
+      }
+
+      if (action === 'cancel') {
+        form.reset();
+        form.classList.add('d-none');
+      }
+
+      if (action === 'delete') {
+        const password = window.prompt('댓글 비밀번호를 입력해 주세요.');
+        if (!password) return;
+
+        setStatus(labels.loading);
+        const { data, error } = await client.rpc('blog_delete_comment', {
+          p_comment_id: card.dataset.commentId,
+          p_password: password
+        });
+
+        if (error || data !== true) {
+          setStatus(error ? normalizeError(error) : '비밀번호가 맞지 않거나 댓글이 잠시 잠겼어요. 잠시 뒤 다시 시도해 주세요.', true);
+          return;
+        }
+
+        setStatus(labels.deleted);
+        await loadComments();
+      }
+    });
+
+    listEl.addEventListener('submit', async function (event) {
+      const form = event.target.closest('[data-comment-edit-form]');
+      if (!form) return;
+
+      event.preventDefault();
+      const card = form.closest('[data-comment-id]');
+      const formData = new FormData(form);
+      const submitButton = form.querySelector('button[type="submit"]');
+      submitButton.disabled = true;
+      setStatus(labels.loading);
+
+      const { data: result, error } = await client.rpc('blog_update_comment', {
+        p_comment_id: card.dataset.commentId,
+        p_password: formData.get('password'),
+        p_content: formData.get('content')
+      });
+
+      submitButton.disabled = false;
+
+      if (error || !result || result.length === 0) {
+        setStatus(error ? normalizeError(error) : '비밀번호가 맞지 않거나 댓글이 잠시 잠겼어요. 잠시 뒤 다시 시도해 주세요.', true);
+        return;
+      }
+
+      setStatus(labels.updated);
+      await loadComments();
+    });
+
+    loadComments();
+  })();
+</script>

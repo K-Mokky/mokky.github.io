@@ -25,3 +25,16 @@ package-lock.json
 # Misc
 _sass/vendors
 assets/js/dist
+
+# OMX runtime state
+.omx/
+
+# Local secrets and generated Supabase state
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+supabase/.branches/
+supabase/.temp/
+supabase/.env*
