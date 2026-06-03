@@ -1,6 +1,6 @@
 ---
 title: "내 이상형을 돌려도! 제작기 - 80문항 이상형 룰렛 다시 설계하기"
-date: 2026-06-03 13:30:00 +0900
+date: 2026-06-03 12:00:00 +0900
 categories: [IT, App, Web]
 tags: [내 이상형을 돌려도, 이상형 테스트, JavaScript, Web App, Codex, 제작기]
 ---
