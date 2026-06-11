@@ -1,6 +1,8 @@
 ---
 title: "ParryByte 제작기"
 date: 2026-06-07 23:35:00 +0900
+last_modified_at: 2026-06-11 09:04:00 +0900
+image: /assets/img/parrybyte-gameplay.png
 categories: [IT, App, APP 제작]
 tags: [ParryByte, Game, macOS, Canvas, WebView, Apps in Toss, ONE store]
 ---
@@ -8,6 +10,8 @@ tags: [ParryByte, Game, macOS, Canvas, WebView, Apps in Toss, ONE store]
 # ParryByte 제작기
 
 이번에는 **ParryByte**를 만든 과정을 정리해보려고 한다.
+
+2026년 6월 11일 기준 최종 수정본에 맞춰 앱인토스, 원스토어 Android, 원스토어 Windows PC 포팅 내용과 새 실행 화면을 다시 반영했다.
 
 ParryByte는 한 줄로 말하면 이런 게임이다.
 
@@ -24,6 +28,15 @@ ParryByte는 한 줄로 말하면 이런 게임이다.
 그리고 나중에는 같은 게임을 앱인토스, 원스토어 Android, 원스토어 Windows PC 버전으로도 옮겼다.
 
 ![ParryByte 플레이 화면](/assets/img/parrybyte-gameplay.png)
+
+아래는 현재 앱인토스 WebView 버전을 실제로 실행해서 다시 촬영한 화면이다.
+
+![ParryByte 현재 실행 화면](/assets/img/parrybyte-current-play.png)
+
+<video controls muted playsinline preload="metadata" poster="/assets/img/parrybyte-current-play.png" style="width: 100%; border-radius: 12px; border: 1px solid rgba(111, 211, 255, 0.25); background: #080b18;">
+  <source src="/assets/videos/parrybyte-gameplay-current.webm" type="video/webm">
+  현재 브라우저에서 WebM 영상을 지원하지 않으면 <a href="/assets/videos/parrybyte-gameplay-current.webm">플레이 영상 파일</a>로 확인할 수 있다.
+</video>
 
 ---
 
@@ -64,7 +77,7 @@ make smoke
 make size
 ~~~
 
-실제로 이번에 다시 확인했을 때 결과는 이랬다.
+최종 수정본을 다시 빌드/검증하면서 확인한 결과는 이랬다.
 
 ~~~text
 bytes_logic_ok=yes
@@ -308,13 +321,16 @@ macOS 네이티브 버전이 어느 정도 완성된 뒤에는,
 
 ~~~bash
 cd Toss
+npm run assets
+npm run check
 npm run test
 ~~~
 
-이번 확인 결과는 통과였다.
+최종 수정본 기준으로 타입 체크, 스모크 테스트, 원본 ParryByte 동일성 감사가 모두 통과했다.
 
 ~~~text
 ParryByte Toss smoke checks passed
+ParryByte Toss parity audit passed
 ~~~
 
 ---
@@ -464,6 +480,19 @@ ParryByte OneStorePC smoke checks passed
 스토어 제출을 하려면 아이콘, 스크린샷, 권한, 개인정보, 등급, 설치/제거, 체크섬, 서명, 검증 문서까지 필요했다.
 
 특히 원스토어 Windows PC 버전을 만들면서 이 차이를 많이 체감했다.
+
+---
+
+## 최종 수정본 기준으로 다시 남긴 것
+
+이번 업데이트에서는 블로그 안의 ParryByte 이미지도 현재 코드에서 다시 생성한 PNG로 교체했다.
+
+- `parrybyte-gameplay.png`: 현재 Toss 자산 생성기 기준 일반 플레이 장면
+- `parrybyte-boss.png`: 현재 Toss 자산 생성기 기준 보스전 장면
+- `parrybyte-current-play.png`: 로컬에서 실제 앱인토스 WebView 버전을 실행해 촬영한 화면
+- `parrybyte-gameplay-current.webm`: 같은 실행 화면에서 짧게 녹화한 플레이 영상
+
+덕분에 글에 남아 있는 화면이 예전 임시 캡처가 아니라, 지금 저장소의 최종 수정본과 맞게 됐다.
 
 ---
 
