@@ -12,15 +12,19 @@ title: "About Me"
     </div>
     <div class="text-container">
       <h2>안녕하세요! 👋</h2>
-      <p>이런저런 딴짓들 하고 있는 아주대학교 학생입니다~! 💻📊</p>
+      <p>이런저런 딴짓들 하고 있는 대학생입니다~! 💻📊</p>
+      <h3 style="margin-top: 20px;">딴짓 경력</h3>
+      <ul style="line-height: 1.8;">
+        <li><strong>2023) 아주대학교 사이버보안학과 입학</strong></li>
+        <li><strong>2024) 육군 정보보호병 입대</strong></li>
+        <li><strong>2026) WHS 4기 활동</strong></li>
+      </ul>
       <h3 style="margin-top: 20px;">딴짓 분야</h3>
       <ul style="line-height: 1.8;">
-        <li><strong>2023) 아주대학교 사이버보안학과</strong></li>
         <li><strong>사진 촬영</strong></li>
         <li><strong>현관문 카드키, NFC 스티커로 이전</strong></li>
         <li><strong>시스템 해킹</strong></li>
         <li><strong>바이브 코딩</strong></li>
-        <li><strong>2026) WHS 4기</strong></li>
       </ul>
     </div>
   </div>
