@@ -17,6 +17,7 @@ title: "About Me"
       <ul style="line-height: 1.8;">
         <li><strong>2023) 아주대학교 사이버보안학과 입학</strong></li>
         <li><strong>2024) 육군 정보보호병 입대</strong></li>
+        <li><strong>2026) 육군 정보보호병 전역</strong></li>
         <li><strong>2026) WHS 4기 활동</strong></li>
       </ul>
       <h3 style="margin-top: 20px;">딴짓 분야</h3>
