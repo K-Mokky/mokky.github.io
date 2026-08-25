@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "About Me"
+icon: far fa-id-card
+order: 4
 ---
 
 <div class="custom-intro-section">

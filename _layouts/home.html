@@ -5,13 +5,9 @@ layout: default
 {% include lang.html %}
 
 {% if paginator.page == 1 %}
+  {% assign home_share_label = site.data.locales[lang].post.share_site %}
   <div class="home-share text-muted">
-    {% include post-sharing.html
-      lang=lang
-      title=site.title
-      url=site.url
-      label=site.data.locales[lang].post.share_site
-    %}
+    {% include post-sharing.html lang=lang title=site.title url=site.url label=home_share_label %}
   </div>
 {% endif %}
 
