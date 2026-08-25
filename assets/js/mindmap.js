@@ -13,9 +13,17 @@
     (childrenOf[parentId] ||= []).push(node);
   });
 
+  function sizeOf(node) {
+    return {
+      w: Math.max(node.offsetWidth, 48),
+      h: Math.max(node.offsetHeight, 28)
+    };
+  }
+
   function place() {
     const width = Math.max(stage.clientWidth, 320);
-    const height = Math.max(560, 220 + nodes.length * 34);
+    const compact = width < 640;
+    const height = Math.max(compact ? 620 : 680, Math.round(width * 0.86));
     stage.style.height = height + "px";
     svg.setAttribute("viewBox", "0 0 " + width + " " + height);
     svg.replaceChildren();
@@ -27,16 +35,15 @@
     pos[hub.dataset.id] = { x: cx, y: cy };
 
     const firstRing = childrenOf[hub.dataset.id] || [];
-    const radius = Math.min(width, height) * (width < 640 ? 0.33 : 0.3);
+    const inner = Math.min(width, height) * (compact ? 0.26 : 0.23);
 
     firstRing.forEach((node, index) => {
       const turn =
-        (index / Math.max(firstRing.length, 1)) * Math.PI * 2 - Math.PI / 2;
-      const wobble = 0.18 * Math.sin(index * 2.15 + 0.4);
-      const r = radius * (1 + wobble);
+        ((index + 0.5) / Math.max(firstRing.length, 1)) * Math.PI * 2 -
+        Math.PI / 2;
       pos[node.dataset.id] = {
-        x: cx + Math.cos(turn) * r,
-        y: cy + Math.sin(turn) * r
+        x: cx + Math.cos(turn) * inner,
+        y: cy + Math.sin(turn) * inner
       };
     });
 
@@ -45,43 +52,49 @@
       if (!kids.length) return;
       const origin = pos[parent.dataset.id];
       const outward = Math.atan2(origin.y - cy, origin.x - cx);
-      const spread = Math.min(1.7, 0.42 + kids.length * 0.26);
+      const spread = Math.min(2.2, 0.7 + kids.length * 0.32);
+      const reach = Math.min(width, height) * (compact ? 0.2 : 0.22);
       kids.forEach((node, index) => {
         const t =
           kids.length === 1
             ? outward
             : outward - spread / 2 + (index / (kids.length - 1)) * spread;
-        const r = radius * (0.56 + (index % 2) * 0.09);
         pos[node.dataset.id] = {
-          x: origin.x + Math.cos(t) * r,
-          y: origin.y + Math.sin(t) * r
+          x: origin.x + Math.cos(t) * reach,
+          y: origin.y + Math.sin(t) * reach
         };
       });
     });
 
-    for (let pass = 0; pass < 12; pass += 1) {
+    for (let pass = 0; pass < 36; pass += 1) {
       for (let i = 0; i < nodes.length; i += 1) {
         for (let j = i + 1; j < nodes.length; j += 1) {
           const a = nodes[i];
           const b = nodes[j];
           const pa = pos[a.dataset.id];
           const pb = pos[b.dataset.id];
+          const sa = sizeOf(a);
+          const sb = sizeOf(b);
           let dx = pb.x - pa.x;
           let dy = pb.y - pa.y;
-          const dist = Math.hypot(dx, dy) || 0.01;
-          const min =
-            a.dataset.depth === "0" || b.dataset.depth === "0" ? 126 : 96;
-          if (dist >= min) continue;
-          const push = (min - dist) / 2;
-          dx /= dist;
-          dy /= dist;
+          const gapX = sa.w / 2 + sb.w / 2 + 16;
+          const gapY = sa.h / 2 + sb.h / 2 + 14;
+          if (Math.abs(dx) >= gapX || Math.abs(dy) >= gapY) continue;
+          if (dx === 0 && dy === 0) {
+            dx = 0.01;
+            dy = 0.01;
+          }
+          const ox = (gapX - Math.abs(dx)) / 2;
+          const oy = (gapY - Math.abs(dy)) / 2;
+          const pushX = Math.sign(dx || 1) * ox;
+          const pushY = Math.sign(dy || 1) * oy;
           if (a.dataset.depth !== "0") {
-            pa.x -= dx * push;
-            pa.y -= dy * push;
+            pa.x -= pushX;
+            pa.y -= pushY;
           }
           if (b.dataset.depth !== "0") {
-            pb.x += dx * push;
-            pb.y += dy * push;
+            pb.x += pushX;
+            pb.y += pushY;
           }
         }
       }
@@ -89,9 +102,11 @@
 
     nodes.forEach((node) => {
       const point = pos[node.dataset.id];
-      const pad = node.dataset.depth === "0" ? 88 : 76;
-      point.x = Math.min(width - pad, Math.max(pad, point.x));
-      point.y = Math.min(height - pad, Math.max(pad, point.y));
+      const size = sizeOf(node);
+      const padX = size.w / 2 + 16;
+      const padY = size.h / 2 + 16;
+      point.x = Math.min(width - padX, Math.max(padX, point.x));
+      point.y = Math.min(height - padY, Math.max(padY, point.y));
       node.style.left = point.x + "px";
       node.style.top = point.y + "px";
     });
@@ -103,8 +118,8 @@
       const b = pos[node.dataset.id];
       const dx = b.x - a.x;
       const dy = b.y - a.y;
-      const midX = (a.x + b.x) / 2 - dy * 0.12;
-      const midY = (a.y + b.y) / 2 + dx * 0.12;
+      const midX = (a.x + b.x) / 2 - dy * 0.08;
+      const midY = (a.y + b.y) / 2 + dx * 0.08;
       const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
       path.setAttribute(
         "d",
