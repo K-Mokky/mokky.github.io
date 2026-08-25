@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="딴짓놀이터">
+  <rect width="1200" height="630" fill="#ffffff"/>
+  <g fill="none" stroke="#111111" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M868 118l8-22M896 96l4-16M930 108l14-10" stroke-width="2"/>
+    <path d="M1028 84l10 6 10-6-4 12 8 10-12-2-8 10-2-12-12-4 12-6z" stroke-width="2"/>
+    <path d="M1086 156c18-6 28 8 18 18" stroke-width="2"/>
+    <circle cx="980" cy="430" r="118" stroke-width="3"/>
+    <path d="M842 398c62-86 196-122 316-48 46 28 58 62 28 86-62 50-196 78-314 8-48-28-62-62-30-46z" stroke-width="3"/>
+    <path d="M910 392c18 8 86 28 148 18" stroke-width="1.6" opacity=".55"/>
+    <path d="M934 478c28 10 70 14 112 4" stroke-width="1.6" opacity=".45"/>
+    <path d="M1048 188c42 18 86 78 64 128" stroke-width="2"/>
+    <path d="M1112 214c-18 34-22 70-8 102" stroke-width="2"/>
+    <circle cx="1118" cy="208" r="7" stroke-width="2"/>
+    <path d="M760 168c-8-28 8-48 24-52M804 164c10-32 32-46 48-42" stroke-width="2.4"/>
+    <circle cx="792" cy="196" r="38" stroke-width="2.6"/>
+    <path d="M776 190c6 6 14 8 20 1M804 190c6 6 14 8 20 1" stroke-width="2.4"/>
+    <path d="M786 214c8 10 22 12 32 2" stroke-width="2.2"/>
+    <path d="M768 230c-18 22-20 58-6 86M816 230c22 18 30 52 18 86" stroke-width="2.4"/>
+    <path d="M762 316c18 28 48 36 74 8" stroke-width="2.4"/>
+    <path d="M816 248c34 8 58 6 72-8" stroke-width="2.4"/>
+    <circle cx="898" cy="228" r="11" stroke-width="2.2"/>
+    <path d="M898 217v-22" stroke-width="2.2"/>
+    <path d="M72 92c40-36 102-36 132 8" stroke-width="1.4" opacity=".35"/>
+  </g>
+  <g font-family="Nanum Pen Script, NanumPen, 'Song Myung', serif" fill="#111111">
+    <text x="88" y="268" font-size="92" letter-spacing="-1">딴짓놀이터</text>
+  </g>
+  <g font-family="Nanum Myeongjo, Georgia, serif" fill="#8a8680">
+    <text x="92" y="328" font-size="28">만들고, 부수고, 기록하는 곳</text>
+  </g>
+  <g font-family="Nanum Barun Gothic, Pretendard, sans-serif" fill="#111111">
+    <text x="92" y="538" font-size="22" font-weight="700">mokky.store</text>
+  </g>
+</svg>

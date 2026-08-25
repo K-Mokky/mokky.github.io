@@ -3,8 +3,6 @@ layout: post
 title: "About Me"
 ---
 
-<link rel="stylesheet" href="/assets/css/custom.css">
-
 <div class="custom-intro-section">
   <div class="intro-item">
     <div class="img-container">

@@ -1,4 +1,3 @@
-
 /* 나의 소개 페이지 커스텀 디자인 */
 .custom-intro-section { max-width: 900px; margin: 30px auto; }
 .intro-item { display: flex; align-items: center; margin-bottom: 60px; flex-wrap: wrap; }
@@ -16,13 +15,352 @@
 .text-container p { font-size: 1.05rem; line-height: 1.6; }
 
 img {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  pointer-events: none;
+}
 
-  -webkit-touch-callout: none; /* 스마트폰에서 사진 꾹 누르면 뜨는 저장 메뉴 막기 */
+:root {
+  --mokky-ink: #1c1c1c;
+  --mokky-muted: #8a8680;
+  --mokky-paper: #fffdf9;
+  --mokky-card: #ffffff;
+  --mokky-line: #ece8e2;
+  --mokky-soft: #f4efe8;
+  --mokky-radius: 22px;
+}
 
-  -webkit-user-select: none;   /* 모바일 텍스트 및 영역 선택 막기 */
+html,
+body,
+h1, h2, h3, h4, h5, h6,
+#sidebar .site-title,
+.card-title {
+  font-family: "Pretendard Variable", Pretendard, "Source Sans Pro", "Apple SD Gothic Neo", sans-serif;
+}
 
-  user-select: none;           /* PC 텍스트 및 영역 선택 막기 */
+:root[data-bs-theme="light"] {
+  --main-bg: var(--mokky-paper);
+  --mask-bg: #d8d4ce;
+  --main-border-color: var(--mokky-line);
+  --text-color: #2b2a28;
+  --text-muted-color: #7a7671;
+  --heading-color: var(--mokky-ink);
+  --label-color: #5d5954;
+  --blockquote-border-color: #efe8de;
+  --blockquote-text-color: #6f6b66;
+  --link-color: #2f5d8c;
+  --link-underline-color: #e5ddd2;
+  --button-bg: #ffffff;
+  --btn-border-color: #ece6de;
+  --btn-backtotop-color: #6d6964;
+  --btn-backtotop-border-color: #efeae3;
+  --img-bg: radial-gradient(circle, #ffffff 0%, #f3eee7 100%);
+  --menu-bg: #ffffff;
+  --menu-border-color: #f3eee8;
+  --menu-shadow-color: rgb(40 32 24 / 10%);
+  --site-title-color: #3a3733;
+  --site-subtitle-color: #8a8680;
+  --sidebar-bg: #f7f3ee;
+  --sidebar-border-color: #efeae3;
+  --sidebar-muted-color: #6d6964;
+  --sidebar-active-color: var(--mokky-ink);
+  --sidebar-hover-bg: rgb(236 226 214 / 72%);
+  --sidebar-btn-bg: #ffffff;
+  --sidebar-btn-color: #8a8680;
+  --avatar-border-color: #ffffff;
+  --topbar-bg: rgb(255 253 249 / 78%);
+  --topbar-text-color: #4b4743;
+  --search-border-color: #efeae3;
+  --card-bg: var(--mokky-card);
+  --card-hover-bg: #f3eee8;
+  --card-shadow: rgb(70 58 42 / 5%) 0 10px 28px 0, rgb(70 58 42 / 6%) 0 0 0 1px;
+  --tag-border: #ece6de;
+  --tag-hover: #efe8de;
+  --btn-paginator-hover-color: #f3eee8;
+  --highlight-bg-color: #f7f4f0;
+  --language-border-color: #efeae3;
+}
 
-  pointer-events: none;        /* 마우스 클릭, 우클릭, 드래그 등을 아예 투명 취급해서 무시함 */
+#sidebar {
+  border-right: 1px solid var(--sidebar-border-color);
+}
 
+#sidebar .profile-wrapper {
+  padding-right: 1.5rem;
+}
+
+#sidebar #avatar {
+  border-radius: 28px;
+  box-shadow: rgb(70 58 42 / 8%) 0 10px 24px;
+}
+
+#sidebar .site-title {
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+#sidebar ul li.nav-item a.nav-link {
+  border-radius: 999px;
+}
+
+#sidebar .sidebar-bottom > a,
+#sidebar .sidebar-bottom #mode-toggle {
+  border-radius: 16px;
+}
+
+#topbar {
+  backdrop-filter: blur(16px);
+}
+
+#topbar .btn,
+#search-input,
+.page-link,
+.post-tag,
+#back-to-top {
+  border-radius: 999px !important;
+}
+
+#search-input {
+  background: #ffffff;
+}
+.form-control,
+textarea.form-control,
+.btn,
+.content img,
+.content figure {
+  border-radius: 16px;
+}
+
+.form-control {
+  background: #ffffff;
+}
+
+body:has(#post-list.post-list-magazine) #panel-wrapper {
+  display: none !important;
+}
+
+body:has(#post-list.post-list-magazine) main.col-xl-9,
+body:has(#post-list.post-list-magazine) #tail-wrapper {
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: 100%;
+}
+
+body:has(#post-list.post-list-magazine) main {
+  padding-right: 1.5rem !important;
+}
+
+#supabase-comments .comment-card,
+#supabase-comments .form-control,
+#supabase-comments textarea {
+  border-radius: 18px !important;
+}
+
+#supabase-comments .btn {
+  border-radius: 999px !important;
+}
+
+#post-list.post-list-magazine {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.6rem 1.15rem;
+  margin-top: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  #post-list.post-list-magazine .card-wrapper:first-child {
+    grid-column: 1 / -1;
+  }
+
+  #post-list.post-list-magazine .card-wrapper:first-child .post-preview {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  #post-list.post-list-magazine .card-wrapper:first-child .preview-img,
+  #post-list.post-list-magazine .card-wrapper:first-child .preview-img img {
+    border-radius: 18px 0 0 18px;
+  }
+
+  #post-list.post-list-magazine .card-wrapper:first-child .preview-img {
+    flex: 0 0 58%;
+    max-width: 58%;
+    aspect-ratio: 16 / 9;
+  }
+
+  #post-list.post-list-magazine .card-wrapper:first-child .card-body {
+    justify-content: center;
+    padding: 1.4rem 1.6rem;
+    min-height: 0;
+  }
+
+  #post-list.post-list-magazine .card-wrapper:first-child .card-title {
+    font-size: 1.55rem;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+  }
+}
+
+#post-list.post-list-magazine .card-wrapper {
+  margin-bottom: 0 !important;
+  background: transparent;
+  border: 0;
+}
+
+#post-list.post-list-magazine .card {
+  background: transparent;
+}
+
+#post-list.post-list-magazine .post-preview {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border-radius: var(--mokky-radius);
+  background: var(--card-bg);
+  box-shadow: none;
+  border: 1px solid var(--mokky-line);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+#post-list.post-list-magazine .post-preview::before {
+  display: none;
+}
+
+#post-list.post-list-magazine .post-preview:hover {
+  transform: translateY(-4px);
+  border-color: transparent;
+  box-shadow: 0 18px 36px rgb(70 58 42 / 10%);
+  text-decoration: none;
+}
+
+#post-list.post-list-magazine .preview-img,
+#post-list.post-list-magazine .preview-img img {
+  border-radius: 18px 18px 0 0;
+}
+
+#post-list.post-list-magazine .preview-img {
+  aspect-ratio: 16 / 10;
+  width: 100%;
+  background: #f6f2ec;
+}
+
+#post-list.post-list-magazine .preview-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+#post-list.post-list-magazine .post-preview:hover .preview-img img {
+  transform: scale(1.04);
+}
+
+#post-list.post-list-magazine .post-cover-fallback {
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 78% 72%, #fff 0 34%, transparent 35%),
+    linear-gradient(180deg, #fffdfb 0%, #f4efe8 100%);
+}
+
+#post-list.post-list-magazine .post-cover-fallback svg {
+  width: 72%;
+  max-width: 240px;
+  height: auto;
+}
+
+#post-list.post-list-magazine .card-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.4rem;
+  padding: 0.85rem 0.95rem 1.05rem;
+  min-height: 4.1rem;
+}
+
+#post-list.post-list-magazine .card-title {
+  flex: 1;
+  margin: 0 !important;
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+#post-list.post-list-magazine .pin-badge {
+  flex: 0 0 auto;
+  color: var(--mokky-muted);
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.content img,
+.content video,
+.content pre,
+.content blockquote,
+.table-wrapper,
+#related-posts .post-preview,
+#access-lastmod,
+.access section {
+  border-radius: 18px;
+}
+
+.content pre,
+.content blockquote {
+  overflow: hidden;
+}
+
+#related-posts .post-preview {
+  border: 1px solid var(--mokky-line);
+  box-shadow: none;
+}
+
+#related-posts .post-preview::before {
+  display: none;
+}
+
+#panel-wrapper .access {
+  border-radius: 22px;
+}
+
+.pagination .page-link {
+  min-width: 2.2rem;
+  min-height: 2.2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 1199.98px) {
+  #post-list.post-list-magazine {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 575.98px) {
+  #post-list.post-list-magazine {
+    grid-template-columns: 1fr;
+    gap: 1.15rem;
+  }
+
+  #post-list.post-list-magazine .card-title {
+    font-size: 1.08rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #post-list.post-list-magazine .post-preview,
+  #post-list.post-list-magazine .preview-img img {
+    transition: none;
+  }
+
+  #post-list.post-list-magazine .post-preview:hover {
+    transform: none;
+  }
 }
