@@ -1,7 +1,9 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-# Fill missing post.image from the first usable figure in the source.
+# Fill missing post.image from the first usable figure, else the site banner.
+
+DEFAULT_COVER = '/assets/img/default-banner.JPG'
 
 Jekyll::Hooks.register :posts, :post_init do |post|
   image = post.data['image']
@@ -26,5 +28,5 @@ Jekyll::Hooks.register :posts, :post_init do |post|
     !src.include?('youtube.com') && !src.include?('ytimg.com') && !src.include?('youtu.be')
   end
 
-  post.data['image'] = cover if cover
+  post.data['image'] = cover || DEFAULT_COVER
 end

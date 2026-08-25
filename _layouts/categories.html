@@ -1,0 +1,112 @@
+---
+layout: page
+---
+
+{% include lang.html %}
+
+{% assign top_categories = '' | split: '' %}
+{% for post in site.posts %}
+  {% if post.categories.size > 0 %}
+    {% assign top_name = post.categories.first %}
+    {% unless top_categories contains top_name %}
+      {% assign top_categories = top_categories | push: top_name %}
+    {% endunless %}
+  {% endif %}
+{% endfor %}
+{% assign top_categories = top_categories | sort %}
+
+<nav class="category-mindmap" aria-label="카테고리 마인드맵">
+  {% if top_categories.size == 1 %}
+    {% assign hub_name = top_categories.first %}
+    {% assign hub_posts = site.categories[hub_name] %}
+    {% capture hub_url %}/categories/{{ hub_name | slugify | url_encode }}/{% endcapture %}
+
+    {% assign second_categories = '' | split: '' %}
+    {% for post in hub_posts %}
+      {% if post.categories.size > 1 %}
+        {% assign second_name = post.categories[1] %}
+        {% unless second_categories contains second_name %}
+          {% assign second_categories = second_categories | push: second_name %}
+        {% endunless %}
+      {% endif %}
+    {% endfor %}
+    {% assign second_categories = second_categories | sort %}
+
+    <div class="mindmap-canvas">
+      <div class="mindmap-hub">
+        <a class="mindmap-node mindmap-node--hub" href="{{ hub_url | relative_url }}">
+          <span>{{ hub_name }}</span>
+          <span class="mindmap-count">{{ hub_posts.size }}</span>
+        </a>
+      </div>
+
+      <ul class="mindmap-tree">
+        {% for second_name in second_categories %}
+          {% assign second_posts = '' | split: '' %}
+          {% for post in hub_posts %}
+            {% if post.categories[1] == second_name %}
+              {% assign second_posts = second_posts | push: post %}
+            {% endif %}
+          {% endfor %}
+
+          {% assign third_categories = '' | split: '' %}
+          {% for post in second_posts %}
+            {% if post.categories.size > 2 %}
+              {% assign third_name = post.categories[2] %}
+              {% unless third_categories contains third_name %}
+                {% assign third_categories = third_categories | push: third_name %}
+              {% endunless %}
+            {% endif %}
+          {% endfor %}
+          {% assign third_categories = third_categories | sort %}
+          {% capture second_url %}/categories/{{ second_name | slugify | url_encode }}/{% endcapture %}
+
+          <li class="mindmap-branch">
+            <a class="mindmap-node" href="{{ second_url | relative_url }}">
+              <span>{{ second_name }}</span>
+              <span class="mindmap-count">{{ second_posts.size }}</span>
+            </a>
+
+            {% if third_categories.size > 0 %}
+              <ul class="mindmap-kids">
+                {% for third_name in third_categories %}
+                  {% assign third_count = 0 %}
+                  {% for post in second_posts %}
+                    {% if post.categories[2] == third_name %}
+                      {% assign third_count = third_count | plus: 1 %}
+                    {% endif %}
+                  {% endfor %}
+                  {% capture third_url %}/categories/{{ third_name | slugify | url_encode }}/{% endcapture %}
+                  <li class="mindmap-leaf">
+                    <a class="mindmap-node mindmap-node--leaf" href="{{ third_url | relative_url }}">
+                      <span>{{ third_name }}</span>
+                      <span class="mindmap-count">{{ third_count }}</span>
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% else %}
+    <div class="mindmap-canvas">
+      <div class="mindmap-hub">
+        <span class="mindmap-node mindmap-node--hub">{{ site.title }}</span>
+      </div>
+      <ul class="mindmap-tree">
+        {% for top_name in top_categories %}
+          {% assign top_posts = site.categories[top_name] %}
+          {% capture top_url %}/categories/{{ top_name | slugify | url_encode }}/{% endcapture %}
+          <li class="mindmap-branch">
+            <a class="mindmap-node" href="{{ top_url | relative_url }}">
+              <span>{{ top_name }}</span>
+              <span class="mindmap-count">{{ top_posts.size }}</span>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+</nav>
