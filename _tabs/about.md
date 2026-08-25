@@ -14,16 +14,17 @@ title: "About Me"
       <h3 style="margin-top: 20px;">딴짓 경력</h3>
       <ul style="line-height: 1.8;">
         <li><strong>2023) 아주대학교 사이버보안학과 입학</strong></li>
-        <li><strong>2024) 육군 정보보호병 입대</strong></li>
-        <li><strong>2026) 병장 만기전역</strong></li>
+        <li><strong>2026) 육군 정보보호병 병장 만기전역</strong></li>
         <li><strong>2026) WHS 4기 활동</strong></li>
       </ul>
       <h3 style="margin-top: 20px;">딴짓 분야</h3>
       <ul style="line-height: 1.8;">
-        <li><strong>사진 촬영</strong></li>
-        <li><strong>현관문 카드키, NFC 스티커로 이전</strong></li>
-        <li><strong>시스템 해킹</strong></li>
+        <li><strong>출사</strong></li>
+        <li><strong>임베디드 갖고놀기</strong></li>
+        <li><strong>윈도우 커널 1-day 학습</strong></li>
         <li><strong>바이브 코딩</strong></li>
+        <li><strong>리버스 엔지니어링</strong></li>
+        <li><strong>포너블</strong></li>
       </ul>
     </div>
   </div>
@@ -41,7 +42,7 @@ title: "About Me"
       </ul>
       <blockquote style="margin-top: 25px; border-left: 4px solid #007bff; padding-left: 15px; color: #555; background: #f8f9fa; padding: 15px; border-radius: 5px;">
         <p style="margin-bottom: 10px;"><strong>"기록은 기억을 지배한다."</strong> - 꾸준히 딴짓한 내용들을 정리하고 있습니다~!</p>
-        <p style="font-size: 0.85em; color: #888; margin-bottom: 0;">Assistance : Gemini PRO, ChatGPT PRO, Claude Code, Codex, etc.</p>
+        <p style="font-size: 0.85em; color: #888; margin-bottom: 0;">Assistance : Gemini PRO, ChatGPT PRO, Claude Code, Codex, Grok, xAi, etc.</p>
       </blockquote>
     </div>
   </div>

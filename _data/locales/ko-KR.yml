@@ -77,6 +77,9 @@ post:
     share_link:
       title: 링크 복사하기
       succeed: 링크가 복사되었습니다!
+    share_instagram:
+      title: 인스타그램
+      succeed: 링크를 복사했어요. 인스타그램에 붙여넣기 하세요.
 
 # Date time format.
 # See: <http://strftime.net/>, <https://day.js.org/docs/en/display/format>

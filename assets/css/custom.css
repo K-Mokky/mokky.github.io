@@ -154,16 +154,6 @@ body:has(#post-list.post-list-magazine) main {
   padding-right: 1.5rem !important;
 }
 
-#supabase-comments .comment-card,
-#supabase-comments .form-control,
-#supabase-comments textarea {
-  border-radius: 18px !important;
-}
-
-#supabase-comments .btn {
-  border-radius: 999px !important;
-}
-
 #post-list.post-list-magazine {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -507,4 +497,14 @@ body:has(#post-list.post-list-magazine) main {
 
 #back-to-top {
   box-shadow: none !important;
+}
+
+.share-wrapper .share-icons > .share-native {
+  background: transparent;
+  color: inherit;
+}
+
+.share-wrapper .share-icons > .share-native:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
 }
