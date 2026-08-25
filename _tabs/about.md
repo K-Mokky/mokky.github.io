@@ -45,4 +45,11 @@ title: "About Me"
       </blockquote>
     </div>
   </div>
+  <div class="intro-item">
+    <div class="text-container" style="min-width: 100%;">
+      <h2 id="copyright">저작권</h2>
+      <p>명시되지 않는 한 이 사이트의 블로그 게시물은 모든 권리가 작성자에게 있습니다.</p>
+      <p>출처를 밝히고 원문 링크를 공유하는 것은 괜찮아요. 글의 전부나 상당 부분을 그대로 베끼거나 다른 곳에 올리는 것은 안 돼요.</p>
+    </div>
+  </div>
 </div>
