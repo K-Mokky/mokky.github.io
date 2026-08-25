@@ -508,3 +508,22 @@ body:has(#post-list.post-list-magazine) main {
   outline: 2px solid currentColor;
   outline-offset: 2px;
 }
+
+article > header .share-wrapper-compact {
+  justify-content: flex-end;
+  margin-top: 0.75rem;
+}
+
+article > header .share-wrapper-compact .share-label {
+  display: none;
+}
+
+.home-share {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0.35rem 0 0.15rem;
+}
+
+.home-share .share-wrapper {
+  margin: 0;
+}

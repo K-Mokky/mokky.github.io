@@ -5,7 +5,7 @@
   href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
 >
 <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}?v={{ site.time | date: '%s' }}">
-{% if page.layout == 'post' %}
+{% if page.layout == 'post' or page.layout == 'home' %}
   {% if site.kakao.javascript_key and site.kakao.javascript_key != empty %}
     <script
       src="https://t1.kakaocdn.net/kakao_js_sdk/2.8.2/kakao.min.js"

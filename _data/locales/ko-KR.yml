@@ -69,6 +69,7 @@ post:
   edit: 이 글 편집
   relate_posts: 관련된 글
   share: 공유하기
+  share_site: 블로그 공유하기
   button:
     next: 다음 글
     previous: 이전 글

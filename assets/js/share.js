@@ -73,11 +73,25 @@
     return el ? el.getAttribute("content") || "" : "";
   }
 
+  function canonicalUrl() {
+    const link = document.querySelector('link[rel="canonical"]');
+    if (link && link.href) return link.href.split("#")[0];
+
+    const ogUrl = metaContent("og:url");
+    if (ogUrl) return ogUrl.split("#")[0];
+
+    const parsed = new URL(window.location.href);
+    parsed.hash = "";
+    parsed.search = "";
+    return parsed.toString();
+  }
+
   function sharePayload() {
+    const url = canonicalUrl();
     return {
       title: document.title,
       text: metaContent("og:description") || metaContent("description") || document.title,
-      url: window.location.href,
+      url: url,
       image: metaContent("og:image") || FALLBACK_IMAGE
     };
   }
@@ -110,10 +124,22 @@
 
   function shareKakaoTalk(btn) {
     const payload = sharePayload();
+    const share = typeof Kakao !== "undefined" && Kakao.Share ? Kakao.Share : null;
 
-    if (initKakao() && Kakao.Share && typeof Kakao.Share.sendDefault === "function") {
-      try {
-        Kakao.Share.sendDefault({
+    if (initKakao() && share) {
+      const fail = () => copyFallback(btn, payload.url);
+
+      if (typeof share.sendScrap === "function") {
+        share.sendScrap({
+          requestUrl: payload.url,
+          fail: fail
+        });
+        showSucceed(btn);
+        return;
+      }
+
+      if (typeof share.sendDefault === "function") {
+        share.sendDefault({
           objectType: "feed",
           content: {
             title: payload.title,
@@ -132,12 +158,10 @@
                 webUrl: payload.url
               }
             }
-          ]
+          ],
+          fail: fail
         });
         showSucceed(btn);
-        return;
-      } catch (error) {
-        copyFallback(btn, payload.url);
         return;
       }
     }
@@ -158,6 +182,14 @@
   }
 
   document.addEventListener("click", (event) => {
+    const copyBtn = event.target.closest(".copy-link");
+    if (copyBtn) {
+      if (isLocked(copyBtn)) return;
+      event.preventDefault();
+      copyFallback(copyBtn, canonicalUrl());
+      return;
+    }
+
     const btn = event.target.closest(".share-native");
     if (!btn || isLocked(btn)) return;
 

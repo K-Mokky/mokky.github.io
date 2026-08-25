@@ -1,14 +1,24 @@
 <!-- Post sharing snippet -->
 
-<div class="share-wrapper d-flex align-items-center">
-  <span class="share-label text-muted">{{ site.data.locales[include.lang].post.share }}</span>
-  <span class="share-icons">
-    {% capture title %}{{ page.title }} - {{ site.title }}{% endcapture %}
-    {% assign title = title | uri_escape %}
-    {% assign url = page.url | absolute_url | url_encode %}
-    {% assign share_copied = site.data.locales[include.lang].post.button.share_link.succeed %}
-    {% assign instagram_hint = site.data.locales[include.lang].post.button.share_instagram.succeed | default: share_copied %}
+{% assign share_lang = include.lang | default: site.lang %}
+{% assign share_copied = site.data.locales[share_lang].post.button.share_link.succeed %}
+{% assign instagram_hint = site.data.locales[share_lang].post.button.share_instagram.succeed | default: share_copied %}
+{% assign share_label = include.label | default: site.data.locales[share_lang].post.share %}
+{% if include.title %}
+  {% assign share_title = include.title | uri_escape %}
+{% else %}
+  {% capture share_title %}{{ page.title }} - {{ site.title }}{% endcapture %}
+  {% assign share_title = share_title | uri_escape %}
+{% endif %}
+{% assign share_url = include.url | default: page.url | absolute_url | url_encode %}
+{% assign wrapper_class = 'share-wrapper d-flex align-items-center' %}
+{% if include.compact %}
+  {% assign wrapper_class = wrapper_class | append: ' share-wrapper-compact' %}
+{% endif %}
 
+<div class="{{ wrapper_class }}">
+  <span class="share-label text-muted">{{ share_label }}</span>
+  <span class="share-icons">
     {% for share in site.data.share.platforms -%}
       {%- capture tooltip -%}
         data-bs-toggle="tooltip" data-bs-placement="top" title="{{ share.type }}" aria-label="{{ share.type }}"
@@ -19,8 +29,8 @@
         <button class="btn text-start" {{ tooltip }}>
           <share-to-mastodon
             class="share-mastodon"
-            message="{{ title }}"
-            url="{{ url }}"
+            message="{{ share_title }}"
+            url="{{ share_url }}"
             {%- if share.instances -%}
               customInstanceList="{{ share.instances | jsonify | xml_escape }}"
             {%- endif %}
@@ -60,7 +70,7 @@
         {% continue %}
       {% endif %}
 
-      {% assign link = share.link | replace: 'TITLE', title | replace: 'URL', url %}
+      {% assign link = share.link | replace: 'TITLE', share_title | replace: 'URL', share_url %}
 
       <a href="{{ link }}" target="_blank" rel="noopener" {{ tooltip }}>
         <i class="fa-fw {{ share.icon }}"></i>
@@ -68,12 +78,12 @@
     {% endfor %}
 
     <button
-      id="copy-link"
-      aria-label="Copy link"
-      class="btn small"
+      type="button"
+      class="btn small copy-link"
+      aria-label="{{ site.data.locales[share_lang].post.button.share_link.title }}"
       data-bs-toggle="tooltip"
       data-bs-placement="top"
-      title="{{ site.data.locales[include.lang].post.button.share_link.title }}"
+      title="{{ site.data.locales[share_lang].post.button.share_link.title }}"
       data-title-succeed="{{ share_copied }}"
     >
       <i class="fa-fw fas fa-link pe-none fs-6"></i>
