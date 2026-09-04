@@ -6,8 +6,6 @@ categories: [IT, Dreamhack]
 # 웹 해킹 #1 ( by Dreamhack ) [ Web ]
 
 **날짜:** Dreamhack
-**URL:** https://blog.naver.com/PostView.naver?blogId=ththth03&logNo=223168714099&categoryNo=&parentCategoryNo=1&from=thumbnailList
-
 ---
 
 웹 해킹 #1 ( by Dreamhack ) [ Web ]
@@ -82,9 +80,8 @@ HTTP란, 통신 규칙 세트 or 프로토콜
 
 ## 이미지
 
-![이미지 1](https://postfiles.pstatic.net/MjAyMzA3MjhfOTUg/MDAxNjkwNTMyNzQ1NDM2.jcfhFK4e3G6lbV91_-YqzaQR4YZckOrgYaBP1fIwQ2Eg.3ic78Go4IPnoEi-VWE1BQTwPqdQP5d6xMr1uY4j7uVsg.PNG.ththth03/Screenshot_2023-07-28_at_17.19.32.png?type=w386)
+![이미지 1](/assets/img/2023-07-28-web-hacking-1-01.png)
 
-![이미지 2](https://postfiles.pstatic.net/MjAyMzA3MjhfMjkg/MDAxNjkwNTM0NjYwNzI5.SFEReerKrH8CLIVUvvcb4a7G8IFK8XEYhWxr8rr0S9gg.i4XOBUBClJvYVMGawHaPi8A9-aYm8Ej-ihmM76Py6LQg.PNG.ththth03/image.png?type=w80_blur)
+![이미지 2](/assets/img/2023-07-28-web-hacking-1-02.png)
 
 ---
-*크롤링 시간: 2026-04-10T15:04:14.753Z*

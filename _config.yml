@@ -28,8 +28,8 @@ url: 'https://mokky.store'
 github:
   username: K-Mokky # change to your GitHub username
 
-instagram:
-  username: instagram_yaskim04 # change to your Twitter username
+#instagram:
+#  username: instagram_username
 
 #twitter:
  # username: twitter_username # change to your Twitter username
@@ -42,9 +42,8 @@ social:
   fediverse_handle: # fill in your fediverse handle. E.g. "@username@domain.com"
   links:
     # The first element serves as the copyright owner's link
-    - https://instagram.com/yaskim04
-    #- https://twitter.com/username # change to your Twitter homepage
     - https://github.com/K-Mokky # change to your GitHub homepage
+    #- https://twitter.com/username # change to your Twitter homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username

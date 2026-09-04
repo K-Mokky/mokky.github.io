@@ -39,3 +39,6 @@ assets/js/dist
 # Local agent/session and scratch files
 .gjc/
 tmp/
+260904-car-display-replacement/
+*.HEIC
+*.heic

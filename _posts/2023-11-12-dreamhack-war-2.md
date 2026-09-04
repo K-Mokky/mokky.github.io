@@ -6,8 +6,6 @@ categories: [IT, Dreamhack]
 # 워게임 (session-basic) #Web Hacking
 
 **날짜:** Dreamhack
-**URL:** https://blog.naver.com/PostView.naver?blogId=ththth03&logNo=223262730294&categoryNo=&parentCategoryNo=1&from=thumbnailList
-
 ---
 
 워게임 (session-basic) #Web Hacking
@@ -48,9 +46,8 @@ admin, guest, user가 .py 파일에 있던 유저 테이블과 요소들이 같�
 
 ## 이미지
 
-![이미지 1](https://postfiles.pstatic.net/MjAyMzExMTJfMjA5/MDAxNjk5NzgzNjk4OTQy.fhR0YRTAOsQog3vaZpzK2BdUNef0MqgcNhW8bAOLuMMg.dsyiYJuYH-xCUChR5oxS6ZK_abn66b1BXrgD33345jgg.PNG.ththth03/image.png?type=w773)
+![이미지 1](/assets/img/2023-11-12-dreamhack-war-2-01.png)
 
-![이미지 2](https://postfiles.pstatic.net/MjAyMzExMTJfMjQ4/MDAxNjk5NzgzNjgzMjY2.EzuLgcMjYQqi0hx4L0fzYk7YsjtD4qTtvs3tfTEXFgMg.OSBCnSoCraAUhgURstIsnAOC8WaCqye7-g2ZskVP8Dgg.PNG.ththth03/image.png?type=w80_blur)
+![이미지 2](/assets/img/2023-11-12-dreamhack-war-2-02.png)
 
 ---
-*크롤링 시간: 2026-04-10T15:03:45.300Z*
