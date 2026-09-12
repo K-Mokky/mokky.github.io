@@ -11,8 +11,6 @@ order: 4
       <img src="/assets/img/character.png" alt="Profile Image 1">
     </div>
     <div class="text-container">
-      <h2>안녕하세요! 👋</h2>
-      <p>이런저런 딴짓들 하고 있는 대학생입니다~! 💻📊</p>
       <h3 style="margin-top: 20px;">딴짓 경력</h3>
       <ul style="line-height: 1.8;">
         <li><strong>2023) 아주대학교 사이버보안학과 입학</strong></li>
@@ -21,12 +19,9 @@ order: 4
       </ul>
       <h3 style="margin-top: 20px;">딴짓 분야</h3>
       <ul style="line-height: 1.8;">
-        <li><strong>출사</strong></li>
         <li><strong>임베디드 갖고놀기</strong></li>
         <li><strong>윈도우 커널 1-day 학습</strong></li>
         <li><strong>바이브 코딩</strong></li>
-        <li><strong>리버스 엔지니어링</strong></li>
-        <li><strong>포너블</strong></li>
       </ul>
     </div>
   </div>
@@ -52,7 +47,6 @@ order: 4
     <div class="text-container" style="min-width: 100%;">
       <h2 id="copyright">저작권</h2>
       <p>명시되지 않는 한 이 사이트의 블로그 게시물은 모든 권리가 작성자에게 있습니다.</p>
-      <p>출처를 밝히고 원문 링크를 공유하는 것은 괜찮아요. 글의 전부나 상당 부분을 그대로 베끼거나 다른 곳에 올리는 것은 안 돼요.</p>
     </div>
   </div>
 </div>
