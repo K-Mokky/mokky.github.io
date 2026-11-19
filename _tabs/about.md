@@ -16,10 +16,11 @@ order: 4
         <li><strong>2023) 아주대학교 사이버보안학과 입학</strong></li>
         <li><strong>2026) 육군 정보보호병 병장 만기전역</strong></li>
         <li><strong>2026) WHS 4기 활동</strong></li>
+        <li><strong>2026) 팀 Ring0 소속</strong></li>
       </ul>
       <h3 style="margin-top: 20px;">딴짓 분야</h3>
       <ul style="line-height: 1.8;">
-        <li><strong>임베디드 갖고놀기</strong></li>
+        <li><strong>임베디드</strong></li>
         <li><strong>윈도우 커널 1-day 학습</strong></li>
         <li><strong>바이브 코딩</strong></li>
       </ul>
@@ -32,14 +33,12 @@ order: 4
     </div>
     <div class="text-container">
       <h2>Contact 📬</h2>
-      <p>궁금한 점이 있으시면, 언제든 아래 메일로 연락주세요~!</p>
       <ul style="list-style: none; padding-left: 0; line-height: 1.8;">
         <li>📧 Email: <a href="mailto:mokky@mokky.store">mokky@mokky.store</a></li>
         <li>🐙 GitHub: <a href="https://github.com/K-Mokky" target="_blank">https://github.com/K-Mokky</a></li>
       </ul>
       <blockquote style="margin-top: 25px; border-left: 4px solid #007bff; padding-left: 15px; color: #555; background: #f8f9fa; padding: 15px; border-radius: 5px;">
-        <p style="margin-bottom: 10px;"><strong>"기록은 기억을 지배한다."</strong> - 꾸준히 딴짓한 내용들을 정리하고 있습니다~!</p>
-        <p style="font-size: 0.85em; color: #888; margin-bottom: 0;">Assistance : Gemini PRO, ChatGPT PRO, Claude Code, Codex, Grok, xAi, etc.</p>
+        <p style="font-size: 0.85em; color: #888; margin-bottom: 0;">Assistance : Gemini, ChatGPT, Claude, Grok</p>
       </blockquote>
     </div>
   </div>
